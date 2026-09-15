@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - run: pip install requests requests_ntlm beautifulsoup4
+      - run: pip install requests requests_ntlm beautifulsoup4 python-dotenv
 
       - run: python cms_notify.py
         env:
