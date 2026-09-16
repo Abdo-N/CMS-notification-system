@@ -8,6 +8,9 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
+    concurrency:
+      group: cms-check
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
 

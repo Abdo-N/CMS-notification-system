@@ -69,10 +69,10 @@ def get_current_items(course_id, season_id):
             content_id_div = content.select_one('div[id^="content"]')
             if content_id_div:
                 content_id = content_id_div['id']
-                # the title sits in the very next <div> after the id div
-                title_div = content_id_div.find_next_sibling('div')
-                title = title_div.get_text(strip=True) if title_div else content_id
-                current_items[content_id] = title
+                # title text lives inside this div itself (in a <strong> tag,
+                # plus a bit of trailing type text like "(Assignment solution)")
+                title = content_id_div.get_text(' ', strip=True)
+                current_items[content_id] = title or content_id
     return current_items
 
 
